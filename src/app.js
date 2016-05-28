@@ -33,7 +33,7 @@ app.configure(configuration(path.join(__dirname, '..')))
 function configureSequelize() {
   const Sequelize = require('sequelize')
   const sequelizeConfig = app.get('sequelize')
-  const sequelize = new Sequelize('sequelize', '', '', app.get('sequelize'))
+  const sequelize = new Sequelize(process.env.DATABASE_URL || app.get('sequelize'))
   app.set('sequelize', sequelize)
 }
 
