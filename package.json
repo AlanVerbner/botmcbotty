@@ -18,8 +18,9 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
-    "start": "nodemon src/",
-    "mocha": "mocha test/ --recursive"
+    "dev": "nodemon src/",
+    "mocha": "mocha test/ --recursive",
+    "start" : "node src/index.js"
   },
   "dependencies": {
     "body-parser": "^1.15.1",

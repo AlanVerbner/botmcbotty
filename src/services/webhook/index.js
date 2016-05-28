@@ -7,8 +7,6 @@ const stateMachine = require(__baseDir + 'lib/messages/response-state-machine')
 const superagent = require(__baseDir + 'lib/util/superagent-promisified')
 const co = require('co')
 
-const TOKEN = 'EAANmfrZAUZCrkBAEOQgj7WduJ18RYBXcsY0w2eWVd0gQdvpHdJUiVnTaQYcITFX8Y5xaWJGmsLCIHnoWlH5YKNUlUJhA01IiMncSqCEtCWfCZCMNYuGPPxoQ7fnTmcQHhlj4OJl09VCFXDKy2ZCzYs9p2ZBnqK6euvAH56g6D0wZDZD'
-
 function sendResponseToFacebook(to, message) {
   return superagent('POST', 'https://graph.facebook.com/v2.6/me/messages')
     .query({ access_token: TOKEN })
@@ -52,14 +50,15 @@ function processMessage(logger, messagesService, expensesService, msg) {
 }
 
 class Service {
-  constructor(messagesService, expensesService, logger) {
+  constructor(fbToken, messagesService, expensesService, logger) {
+    this.fbToken = fbToken
     this.messagesService = messagesService
     this.expensesService = expensesService
     this.logger = logger
   }
 
   find(params) {
-    if (params.query['hub.verify_token'] === TOKEN) {
+    if (params.query['hub.verify_token'] === fbToken) {
       return Promise.resolve(parseInt(params.query['hub.challenge']))
     }
     return Promise.reject('Error, wrong validation token')
@@ -82,7 +81,7 @@ class Service {
 module.exports = function () {
   const app = this
   // Initialize our service with any options it requires
-  app.use('/webhooks', new Service(app.service('messages'), app.service('expenses'), app.get('logger')))
+  app.use('/webhooks', new Service(app.get('fbToken'), app.service('messages'), app.service('expenses'), app.get('logger')))
 
   // Get our initialize service to that we can bind hooks
   const webhookService = app.service('/webhooks')

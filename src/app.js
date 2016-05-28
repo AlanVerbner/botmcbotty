@@ -37,6 +37,8 @@ function configureSequelize() {
   app.set('sequelize', sequelize)
 }
 
+app.set('fbToken', process.env.FB_TOKEN)
+
 app.use(compress())
   .options('*', cors())
   .use(cors())
