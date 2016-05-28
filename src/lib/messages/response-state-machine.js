@@ -56,13 +56,18 @@ function processMessage(expensesService, message) {
         case messageTypes.NEW_EXPENSE:
             return createNewExpenseMessageResponse(message)
         case messageTypes.CONFIRM_ACTION:
-            return expensesService.create({
-                amount: message.amount,
-                category: message.category,
-                description: expense.description
-            }).then(() => {
-                return createNewConfirmActionResponse(message)
-            })
+
+            if (message.confirm) {
+                return expensesService.create({
+                    amount: message.amount,
+                    category: message.category,
+                    description: expense.description
+                }).then(() => {
+                    return createNewConfirmActionResponse(message)
+                })
+            } else {
+                return Promise.resolve(createNewConfirmActionResponse(message))
+            }
         default:
             return unknownResponse
     }
