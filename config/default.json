@@ -1,0 +1,22 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "nedb": "../data/",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "Xzdt6yUvqsOZQmHMu6UOLjcqg+HIpAer4pUpNoxMRZt2aSFEqPXsvOYxmQTJzQrb74claiuCWqBpnDBx9874Fw=="
+    },
+    "local": {}
+  },
+  "sequelize": {
+    "host": "localhost",
+    "dialect": "sqlite",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 10000
+    },
+    "storage": "../data/database.sqlite"
+  }
+}
