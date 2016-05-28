@@ -25,7 +25,7 @@ function createNewExpenseMessageResponse(message) {
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text": `Have you spent \$${message.amount} in ${message.category}?`,
+                "text": `Have you spent \$${message.amount} in ${message.description}?`,
                 "buttons": [
                     {
                         "type": "postback",
