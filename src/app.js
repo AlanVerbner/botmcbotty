@@ -11,7 +11,7 @@ const hooks = require('feathers-hooks')
 const rest = require('feathers-rest')
 const bodyParser = require('body-parser')
 const logger = require('feathers-logger')
-const socketio = require('feathers-socketio');
+//const socketio = require('feathers-socketio');
 
 const middleware = require('./middleware')
 const services = require('./services')
