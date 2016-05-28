@@ -50,7 +50,7 @@ app.use(compress())
   .configure(configureSequelize)
   .configure(hooks())
   .configure(rest())
-  .configure(socketio())
+  //.configure(socketio())
   .configure(services)
   .configure(middleware)
 
