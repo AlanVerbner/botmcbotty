@@ -58,7 +58,7 @@ class Service {
   }
 
   find(params) {
-    if (params.query['hub.verify_token'] === fbToken) {
+    if (params.query['hub.verify_token'] === this.fbToken) {
       return Promise.resolve(parseInt(params.query['hub.challenge']))
     }
     return Promise.reject('Error, wrong validation token')
