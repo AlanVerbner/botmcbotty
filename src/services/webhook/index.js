@@ -2,9 +2,9 @@
 
 const hooks = require('./hooks')
 const _ = require('lodash')
-const messageParser = require(__baseDir + 'lib/messages/message-parser')
-const stateMachine = require(__baseDir + 'lib/messages/response-state-machine')
-const superagent = require(__baseDir + 'lib/util/superagent-promisified')
+const messageParser = require('../../lib/messages/message-parser')
+const stateMachine = require('../../lib/messages/response-state-machine')
+const superagent = require('../../lib/util/superagent-promisified')
 const co = require('co')
 
 function sendResponseToFacebook(to, message) {
