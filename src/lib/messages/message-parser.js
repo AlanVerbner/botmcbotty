@@ -22,7 +22,7 @@ function processTextMessage(payload) {
 }
 
 function processPostback(payload) {
-    return actionCreator.createNewConfirmAction(payload.mid, payload.confirm, payload.amount, payload.category)
+    return actionCreator.createNewConfirmAction(payload.mid, payload.confirm, payload.amount, payload.category, payload.description)
 }
 
 const addFbData = function (fbMessage, procesedMessage) {

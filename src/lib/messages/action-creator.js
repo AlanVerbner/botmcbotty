@@ -15,12 +15,13 @@ function createNewUnknownMessage(mid, amount, category) {
     }
 }
 
-function createNewExpenseAction(mid, amount, category) {
+function createNewExpenseAction(mid, amount, category, description) {
     return {
         type: messageTypes.NEW_EXPENSE,
         mid,
         amount,
-        category
+        category,
+        description
     }
 }
 
