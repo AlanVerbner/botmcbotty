@@ -3,13 +3,18 @@
 const actionCreator = require('./action-creator')
 const Maybe = require('monet').Maybe
 
+const categoryDetector = require('./category-detector')
+
 function processTextMessage(payload) {
 
     const matches = payload.text.toLowerCase().match(/i spent \$?(\d+\.?\d*|\.\d+) in ([A-Za-z]+)/)
     if (matches && matches.length == 3) {
+        const category = categoryDetector(matches[2])
+
         return actionCreator.createNewExpenseAction(
             payload.mid,
             parseFloat(matches[1]),
+            category,
             matches[2])
     }
 

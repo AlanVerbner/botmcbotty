@@ -24,12 +24,13 @@ function createNewExpenseAction(mid, amount, category) {
     }
 }
 
-function createNewConfirmAction(mid, confirm, amount, category) {
+function createNewConfirmAction(mid, confirm, amount, description, category) {
     return {
         type: messageTypes.CONFIRM_ACTION,
         confirm,
         mid: mid + "_confirm",
         amount,
+        description,
         category
     }
 }

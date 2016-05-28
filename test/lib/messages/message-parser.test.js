@@ -111,7 +111,7 @@ describe('Message Parsing Tests', function () {
             expect(result.type).to.equal(messageTypes.CONFIRM_ACTION)
             expect(result.confirm).to.be.true
             expect(result.amount).to.equal(20.3)
-            expect(result.category).to.equal('verduleria')
+            expect(result.description).to.equal('verduleria')
             expect(result.mid).to.equal('mid.1464445596042:a0cd29c35fff51ab76_confirm')
         })
         
@@ -133,7 +133,7 @@ describe('Message Parsing Tests', function () {
             expect(result.type).to.equal(messageTypes.CONFIRM_ACTION)
             expect(result.confirm).to.be.false
             expect(result.amount).to.equal(20.3)
-            expect(result.category).to.equal('verduleria')
+            expect(result.description).to.equal('verduleria')
             expect(result.mid).to.equal('mid.1464445596042:a0cd29c35fff51ab76_confirm')
         })
     })

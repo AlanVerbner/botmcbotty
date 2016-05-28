@@ -13,6 +13,7 @@ function createExpensePayload(message, confirm) {
         "type": messageTypes.CONFIRM_ACTION,
         "mid": message.mid,
         "amount": message.amount,
+        "description": message.description,
         "category": message.category,
         "confirm": confirm
     })
@@ -42,7 +43,7 @@ function createNewExpenseMessageResponse(message) {
 }
 
 function createNewConfirmActionResponse(message) {
-    const confirmMessage = 'Your expense of $' + message.amount + ' in ' + message.category + (message.confirm ? ' was saved! ' : ' wasn\'t saved')
+    const confirmMessage = 'Your expense of $' + message.amount + ' in ' + message.description + (message.confirm ? ' was saved! ' : ' wasn\'t saved')
     return {
         text: confirmMessage
     }
@@ -57,7 +58,8 @@ function processMessage(expensesService, message) {
         case messageTypes.CONFIRM_ACTION:
             return expensesService.create({
                 amount: message.amount,
-                category: message.category
+                category: message.category,
+                description: expense.description
             }).then(() => {
                 return createNewConfirmActionResponse(message)
             })
