@@ -61,7 +61,7 @@ function processMessage(expensesService, message) {
                 return expensesService.create({
                     amount: message.amount,
                     category: message.category,
-                    description: expense.description
+                    description: message.description
                 }).then(() => {
                     return createNewConfirmActionResponse(message)
                 })
