@@ -7,9 +7,9 @@ const stateMachine = require('../../lib/messages/response-state-machine.js')
 const superagent = require('../../lib/util/superagent-promisified.js')
 const co = require('co')
 
-function sendResponseToFacebook(to, message) {
+function sendResponseToFacebook(token, to, message) {
   return superagent('POST', 'https://graph.facebook.com/v2.6/me/messages')
-    .query({ access_token: TOKEN })
+    .query({ access_token: token })
     .send({
       'recipient': {
         'id': to
@@ -19,7 +19,7 @@ function sendResponseToFacebook(to, message) {
     .end()
 }
 
-function processMessage(logger, messagesService, expensesService, msg) {
+function processMessage(logger, token, messagesService, expensesService, msg) {
   return co(function* () {
     logger.info('new Message arrived', JSON.stringify(msg))
     const parsed = messageParser(msg)
@@ -35,7 +35,7 @@ function processMessage(logger, messagesService, expensesService, msg) {
       const responseMsg = yield stateMachine(expensesService, parsed).some()
       try {
         logger.info('Sending to %s response %s', to, JSON.stringify(responseMsg))
-        yield sendResponseToFacebook(to, responseMsg)
+        yield sendResponseToFacebook(token, to, responseMsg)
         logger.info('Response to %s sent', to)
         logger.info('Saving message %s into db', messageId)
         yield messagesService.create({ id: messageId })
@@ -69,7 +69,7 @@ class Service {
     return co(function* () {
       for (let entry of data.entry) {
         for (let msg of entry.messaging) {
-          yield processMessage(this.logger, this.messagesService, this.expensesService, msg)
+          yield processMessage(this.logger, this.fbToken, this.messagesService, this.expensesService, msg)
         }
       }
       return Promise.resolve(true)
