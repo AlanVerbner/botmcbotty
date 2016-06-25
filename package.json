@@ -28,6 +28,7 @@
     "co": "^4.6.0",
     "compression": "^1.6.2",
     "cors": "^2.7.1",
+    "fb-messenger": "^1.0.0",
     "feathers": "^2.0.1",
     "feathers-authentication": "^0.7.7",
     "feathers-configuration": "^0.2.3",
