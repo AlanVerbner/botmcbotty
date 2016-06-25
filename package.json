@@ -41,6 +41,7 @@
     "lodash": "^4.12.0",
     "monet": "^0.8.10",
     "natural": "^0.4.0",
+    "node-wit": "^3.3.2",
     "passport": "^0.3.2",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
@@ -53,6 +54,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "faker": "^3.1.0",
     "jshint": "^2.9.2",
     "mocha": "^2.4.5",
     "request": "^2.72.0"
