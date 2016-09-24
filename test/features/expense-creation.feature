@@ -1,4 +1,4 @@
-Feature: Conversation parsing using Wit.Ai
+Feature: Expense creation using Wit.Ai
   As user I want to be able to create an expense based on a bot chat
 
   Scenario: Saving a simple expense
@@ -7,7 +7,7 @@ Feature: Conversation parsing using Wit.Ai
     And Confirm my expense
     Then It should create a new Expense with type Supermarket and amount of 20
   
-   Scenario: Cancel an expense
+  Scenario: Cancel an expense
     Given I'm a random facebook user
     When I send the message I spent $20 in Supermarket
     And Cancel my expense

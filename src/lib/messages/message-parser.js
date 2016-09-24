@@ -20,7 +20,6 @@ const actions = {
         cb(context);
     },
     error(sessionId, context, err) {
-        console.log(arguments)
     },
     saveExpense(sessionId, context, callback) {
         delete context.yes_no;
