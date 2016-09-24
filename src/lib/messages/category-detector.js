@@ -1,16 +1,16 @@
 'use strict';
 
-const natural = require('natural')
+const natural = require('natural');
 
-let classifier = undefined
+let classifier;
 
-natural.BayesClassifier.load('data/classifier.json', null, function (err, instance) {
-    classifier = instance
+natural.BayesClassifier.load('data/classifier.json', null, function(err, instance) {
+  classifier = instance;
 });
 
 module.exports = function classify(description) {
-    if (classifier)
-        return classifier.classify(description)
+  if (classifier)
+    return classifier.classify(description);
 
-    throw new Error('Category Detector is not Ready!')
-}
+  throw new Error('Category Detector is not Ready!');
+};

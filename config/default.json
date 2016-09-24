@@ -1,8 +1,7 @@
 {
   "host": "localhost",
   "port": 3030,
-  "nedb": "../data/",
-  "public": "../public/",
+  "logLevel": "DEBUG",
   "auth": {
     "token": {
       "secret": "Xzdt6yUvqsOZQmHMu6UOLjcqg+HIpAer4pUpNoxMRZt2aSFEqPXsvOYxmQTJzQrb74claiuCWqBpnDBx9874Fw=="
@@ -17,6 +16,6 @@
       "min": 0,
       "idle": 10000
     },
-    "storage": "../data/database.sqlite"
+    "storage": "./data/database.sqlite"
   }
 }

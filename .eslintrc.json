@@ -1,6 +1,18 @@
 {
-    "env": {
-        "es6": true,
-        "node": true
-    }
+  "extends": "google",
+  "installedESLint": true,
+  "globals": {
+    "describe": true,
+    "before": true,
+    "after": true,
+    "it": true
+  },
+  "rules": {
+    "new-cap": ["error", {
+      "capIsNewExceptions": ["Given", "When", "Then"]
+    }],
+    "camelcase": "warn",
+    "generator-star-spacing": "off",
+    "max-len": "off"
+  }
 }
